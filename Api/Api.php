@@ -19,6 +19,11 @@ class Api
     protected $container;
 
     /**
+     * @var string
+     */
+    protected $apiUrl;
+
+    /**
      * The ExtDirect JSON API description.
      * 
      * @var JSON
@@ -28,10 +33,10 @@ class Api
     /**
      * Initialize the API.
      */
-    public function __construct($container)
+    public function __construct($container,$apiUrl)
     {
         $this->container = $container;
-
+        $this->apiUrl = $apiUrl;
         if ($container->get('kernel')->isDebug()) {
             $this->api = json_encode($this->createApi());
         } else {            
@@ -73,7 +78,7 @@ class Api
         }
         
         return array(
-            'url' => $this->container->getParameter('direct.api.route_pattern'),
+            'url' =>$this->apiUrl,
             'type' => $this->container->getParameter('direct.api.type'),
             'namespace' => $this->container->getParameter('direct.api.namespace'),
             'id' => $this->container->getParameter('direct.api.id'),

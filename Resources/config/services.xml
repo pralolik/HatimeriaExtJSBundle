@@ -28,5 +28,6 @@
             <argument type="service" id="hatimeria_extjs.camelizer" />
         </service>
         <service id="hatimeria_extjs.camelizer" class="Hatimeria\ExtJSBundle\Util\Camelizer"/>
+        <service id="hatimeria_extjs.app_name" class="Hatimeria\ExtJSBundle\Service\AppRouteService"/>
     </services>
 </container>
